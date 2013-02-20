@@ -52,10 +52,10 @@ body {
     left:50%;
     top:50%;
     height:75px;                   /* text area height */
-    width:250px;                   /* text area width */
+    width:260px;                   /* text area width */
     text-align:center;
-    padding:180px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
-    margin:-115px 0px 0px -112px;  /* offset vertical: half of image height and text area height */
+    padding:180px 0px 10px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
+    margin:-200px 0px 0px -132px;  /* offset vertical: half of image height and text area height */
                                    /* offset horizontal: half of text area width */
     border: 1px solid black;
 }
@@ -101,9 +101,8 @@ h1 {
 
 #demo {
 	position: relative;
-	left: -50%;
-	width: 200%;
-	height: 200px;
+	left: -20px;
+	width: 100%;
 }
 
 @keyframes fade {
