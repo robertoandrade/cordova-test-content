@@ -58,33 +58,36 @@ var app = {
         
         //myScroll = new iScroll(scroller, { hScroll: true, vScroll: false});
 
-        $(parentElement).hide();
+        //$(parentElement).hide();
         
         $(listeningElement).hide();
         $(receivedElement).show();
 
         console.log('Received Event: ' + id);
         navigator.globalization
-                .getPreferredLanguage(
-                    function (language) {
-                          var strings = "res/strings/{0}.json".format(language.value);
-                          console.log("reading: {0}".format(strings));
-                                      
-                          $.ajax({url: strings, dataType: "json"})
-                          .done(function(json) {
-                                console.log(json);
-                                $("h1").text(json.title);
-                                $(receivedElement).text(json.ready);
-                            })
-                          .error(function(e) {
-                                 console.log(e);
-                             });
-                          
-                        console.log(language);
-                        $(parentElement).slideDown(2000);
-                                      
+                .getLocaleName(
+                    function (locale) {
+                    	console.log(JSON.stringify(locale));
+                    	var language = locale.value.replace(/(\w{2})_(.{2})/, "$1");
+                    	
+	                    var strings = "res/strings/{0}.json".format(language);
+	                    console.log("reading: {0}".format(strings));
+	                                  
+	                    $.ajax({url: strings, dataType: "json"})
+	                      .done(function(json) {
+	                            console.log(JSON.stringify(json));
+	                            
+	                            $("h1").text(json.title);
+	                            $(receivedElement).text(json.ready);
+	                        })
+	                      .error(function(e) {
+	                             console.log(JSON.stringify(e));
+	                         });
+	                      
+                        //$(parentElement).slideDown(2000);
                     },
-                    function () {
+                    function (e) {
+                    	console.log(JSON.stringify(e));
                         alert('Error getting language\n');
                     }
                 );
