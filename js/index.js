@@ -39,6 +39,7 @@ var app = {
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
+        document.addEventListener('touchmove', function(e) { e.preventDefault(); }, false);
     },
     // deviceready Event Handler
     //
@@ -49,15 +50,13 @@ var app = {
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-        document.addEventListener('touchmove', function(e) { e.preventDefault(); }, false);
-        
         var scroller = "appEl";
         
         var parentElement = document.getElementById(id);
         var listeningElement = parentElement.querySelector('.listening');
         var receivedElement = parentElement.querySelector('.received');
         
-        myScroll = new iScroll(scroller, { hScroll: true, vScroll: false});
+        //myScroll = new iScroll(scroller, { hScroll: true, vScroll: false});
 
         $(parentElement).hide();
         
