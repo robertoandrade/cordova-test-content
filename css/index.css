@@ -102,7 +102,7 @@ h1 {
 #demo {
 	position: relative;
 	left: -20px;
-	width: 100%;
+	width: 300px;
 }
 
 @keyframes fade {
